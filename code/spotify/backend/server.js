@@ -5,6 +5,7 @@ const bodyp=require('body-parser');
 const cors=require('cors');
 const db=require('./config/database.js');
 const User=require('./models/User.js');
+const mongoose = require('mongoose');
 
 app.use(bodyp.json());
 app.use(cors());
@@ -25,7 +26,16 @@ app.post('/signin',(req,res)=>{
 
 app.post('/register',(req,res)=>{
   const {uniqueid,password,name,email }=req.body;
-    res.status(200).json('success');
+  User.insertMany([{
+    name:name,
+    uniqueid:uniqueid,
+    password:password,
+    email:email
+  }])
+  .then(data=>{
+    res.status(200).json('pp')
+  });
+  res.status(200).json('success');
 })
 
 app.listen(port, () => {
