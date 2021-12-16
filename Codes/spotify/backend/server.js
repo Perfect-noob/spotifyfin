@@ -1,6 +1,24 @@
 const express = require('express')
 const app = express();
-const port = 3000;
+const port = 3001;
+const bodyp=require('body-parser');
+const cors=require('cors');
+
+app.use(bodyp.json());
+app.use(cors());
+
+app.post('/signin',(req,res)=>{
+  const {uniqueid,password }=req.body;
+   if(uniqueid==='uid' && password==='p')
+   res.status(200).json('ok');
+   else 
+    res.status(400).json('not ok');
+})
+
+app.post('/register',(req,res)=>{
+  const {uniqueid,password,name,email }=req.body;
+    res.status(200).json('success');
+})
 
 app.listen(port, () => {
   console.log(`Test`)

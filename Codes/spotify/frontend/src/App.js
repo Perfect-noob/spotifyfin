@@ -35,7 +35,6 @@ class App extends Component {
             {
             return (
                     <div className="App">
-                      <Songplayer/>
                       <Homepage routechange={this.routechange}/>      
                     </div>
                   );
