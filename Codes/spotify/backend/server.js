@@ -3,9 +3,17 @@ const app = express();
 const port = 3001;
 const bodyp=require('body-parser');
 const cors=require('cors');
+const db=require('./config/database.js');
+const User=require('./models/User.js');
 
 app.use(bodyp.json());
 app.use(cors());
+
+app.get('/db',(req,res)=>{
+  User.find({}).then(data=>{
+    res.json(data);
+  })
+})
 
 app.post('/signin',(req,res)=>{
   const {uniqueid,password }=req.body;

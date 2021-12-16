@@ -30,7 +30,7 @@ class Signin extends Component{
             if(data==='ok')
             this.props.routechange('Home');
             else
-            alert('Invalid usernam or password');
+            alert('Invalid username or password');
         })
     }
     render()
